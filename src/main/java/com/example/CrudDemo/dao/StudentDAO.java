@@ -8,13 +8,23 @@ import java.util.List;
 
 public interface StudentDAO {
 
+    // Create
     void save(Student student);
 
+    // Read
     List<Student> findAll();
 
     Student findById(int id);
 
-    Student findByName(String name);
+    List<Student> findByLastName(String name);
 
 
+    // Update
+
+    void update(Student student);
+
+
+    // Delete
+
+    void delete(int id);
 }

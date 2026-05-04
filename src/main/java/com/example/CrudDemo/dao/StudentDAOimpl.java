@@ -2,6 +2,7 @@ package com.example.CrudDemo.dao;
 
 import com.example.CrudDemo.entity.Student;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -40,9 +41,30 @@ public class StudentDAOimpl implements StudentDAO {
     }
 
     @Override
-    public Student findByName(String name) {
-        return null;
+    public List<Student> findByLastName(String lastName) {
+        TypedQuery<Student> query = entityManager.createQuery("FROM Student WHERE lastName = :name", Student.class);
+        query.setParameter("name", lastName);
+
+
+        return query.getResultList();
     }
 
+    @Override
+    @Transactional
+    public void update(Student student) {
+        entityManager.merge(student);
+    }
+
+    @Override
+    // o que esse Trasactional faz?
+    @Transactional
+    public void delete(int id) {
+        Student student = this.findById(id);
+        Query query = entityManager.createQuery("DELETE FROM Student WHERE id = :id");
+        query.setParameter("id", id);
+
+        int rolls = query.executeUpdate();
+        System.out.println("Deleted student with id " + id + " with rolls " + rolls);
+    }
 
 }
