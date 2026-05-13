@@ -31,6 +31,8 @@ public class Student {
         this.email = email;
     }
 
+    // Isso não deveria estar num POJO?
+
     public String getFirstName() {
         return firstName;
     }

@@ -22,43 +22,9 @@ public class CrudDemoApplication {
 		return Runner -> {
 //			CreateStudent(studentDAO);
 //			findStudentById(studentDAO);
-			findAll(studentDAO);
-
+//			findAll(studentDAO);
 //			updateStudent(studentDAO);
 		};
 
-	}
-
-
-	private void CreateStudent(StudentDAO studentDAO) {
-		Student pedro = new Student("a", "v", "a");
-		studentDAO.save(pedro);
-
-		System.out.println("Student created successfully");
-	}
-
-	private void updateStudent(StudentDAO studentDAO) {
-		Student student = studentDAO.findById(2);
-
-		student.setFirstName("Bruno");
-		student.setEmail("Bruno@gmail.com");
-
-		studentDAO.update(student);
-
-		System.out.println(studentDAO.findById(2));
-	}
-
-	private void findStudentById(StudentDAO studentDAO) {
-		Student student = studentDAO.findById(2);
-
-		System.out.println("Student found successfully");
-		System.out.println(student);
-	}
-
-	private void findAll(StudentDAO studentDAO) {
-		List<Student> students = studentDAO.findAll();
-		for(Student student : students) {
-			System.out.println(student);
-		}
 	}
 }
