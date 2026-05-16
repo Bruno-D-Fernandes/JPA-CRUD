@@ -23,7 +23,15 @@ public class StudentCrontroller {
         return student;
     }
 
-    @GetMapping("getAll")
+    @GetMapping("/get/{studentId}")
+    public Student getStudentByID(@PathVariable int studentId){
+
+        // if( studentId > studentDa)
+
+        return studentDAOimpl.findById(studentId);
+    }
+
+    @GetMapping("/getAll")
     public List<Student> getAll(){
         return studentDAOimpl.findAll();
     }
