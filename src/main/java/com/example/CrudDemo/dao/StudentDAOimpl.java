@@ -50,13 +50,19 @@ public class StudentDAOimpl implements StudentDAO {
     }
 
     @Override
+    public Integer getHightId() {
+        TypedQuery<Integer> query = entityManager.createQuery("SELECT MAX(id) FROM Student", Integer.class);
+        return query.getSingleResult();
+    }
+
+    @Override
     @Transactional
     public void update(Student student) {
         entityManager.merge(student);
     }
 
     @Override
-    // o que esse Trasactional faz?
+    // o que esse Transactional faz?
     @Transactional
     public void delete(int id) {
         Student student = this.findById(id);
@@ -66,5 +72,10 @@ public class StudentDAOimpl implements StudentDAO {
         int rolls = query.executeUpdate();
         System.out.println("Deleted student with id " + id + " with rolls " + rolls);
     }
+
+
+
+
+
 
 }

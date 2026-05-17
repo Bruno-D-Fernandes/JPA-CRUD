@@ -2,8 +2,6 @@ package com.example.CrudDemo.dao;
 
 import com.example.CrudDemo.entity.Student;
 
-
-
 import java.util.List;
 
 public interface StudentDAO {
@@ -18,6 +16,7 @@ public interface StudentDAO {
 
     List<Student> findByLastName(String name);
 
+    Integer getHightId();
 
     // Update
 
