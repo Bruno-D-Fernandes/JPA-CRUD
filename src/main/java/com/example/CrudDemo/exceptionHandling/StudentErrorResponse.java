@@ -1,6 +1,4 @@
-package com.example.CrudDemo.exeptionHandling;
-
-import java.time.ZonedDateTime;
+package com.example.CrudDemo.exceptionHandling;
 
 public class StudentErrorResponse{
     private int status;

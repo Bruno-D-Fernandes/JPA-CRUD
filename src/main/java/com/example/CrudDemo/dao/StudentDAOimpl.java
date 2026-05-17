@@ -1,12 +1,17 @@
 package com.example.CrudDemo.dao;
 
 import com.example.CrudDemo.entity.Student;
+import com.example.CrudDemo.exceptionHandling.StudentErrorResponse;
+import com.example.CrudDemo.exceptionHandling.StundetNotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
 
@@ -72,10 +77,5 @@ public class StudentDAOimpl implements StudentDAO {
         int rolls = query.executeUpdate();
         System.out.println("Deleted student with id " + id + " with rolls " + rolls);
     }
-
-
-
-
-
 
 }

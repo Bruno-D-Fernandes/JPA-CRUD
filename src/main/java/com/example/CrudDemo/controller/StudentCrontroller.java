@@ -2,8 +2,11 @@ package com.example.CrudDemo.controller;
 
 import com.example.CrudDemo.dao.StudentDAOimpl;
 import com.example.CrudDemo.entity.Student;
-import com.example.CrudDemo.exeptionHandling.StundetNotFoundExeption;
+import com.example.CrudDemo.exceptionHandling.StudentErrorResponse;
+import com.example.CrudDemo.exceptionHandling.StundetNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +34,7 @@ public class StudentCrontroller {
         System.out.println(teste);
 
          if( studentId > teste || studentId < 0) {
-            throw new StundetNotFoundExeption("Estudante fora dos limites");
+            throw new StundetNotFoundException("Estudante fora dos limites");
          }
 
         return studentDAOimpl.findById(studentId);
@@ -41,5 +44,7 @@ public class StudentCrontroller {
     public List<Student> getAll(){
         return studentDAOimpl.findAll();
     }
+
+
 
 }
